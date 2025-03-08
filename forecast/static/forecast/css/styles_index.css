@@ -1,0 +1,349 @@
+:root {
+    --headerAndfooterHeight: 100px;
+    --mainHeight: 100vh;
+
+    --majorColor: #3e4650;
+    --minorColor: #57616f;
+    --textColor: white;
+
+    --borderPaddings: 50px;
+    --defaultItemsPadding: 20px;
+
+    --fontSizeHeader: 18px;
+    --fontSizeChosenCity: 28px;
+    --fontSizeChosenBio: 18px;
+    --fontSizePreviewBio: calc(var(--fontSizeChosenBio) - 5px);
+    --fontSizeFooter: 18px;
+
+}
+
+html, body {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+    color: white;
+    user-select: none;
+}
+
+header {
+    height: var(--headerAndfooterHeight);
+    width: 100%;
+    position: fixed;
+    top:0;
+    background-color: var(--minorColor);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+
+
+    .headerContent {
+        height: 100%;
+        width: 1000px;
+        padding-left: var(--borderPaddings);
+        padding-right: var(--borderPaddings);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .homeLogo {
+            height: 80px;
+            width: 80px;
+            filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+
+            &:hover {
+                scale: 1.1;
+            }
+        }
+
+        .websiteTitle {
+            font-size: 50px;
+            padding-left: var(--defaultItemsPadding);
+        }
+
+        form {
+            padding-left: var(--defaultItemsPadding);
+            display: flex;
+            align-items: center;
+
+            #cityNameInput {
+                height: 40px;
+                width: 350px;
+                border-radius: 20px 20px 20px 20px;
+                border: none;
+                font-size: var(--fontSizeHeader);
+                padding-left: var(--defaultItemsPadding);
+                color: var(--majorColor);
+            }
+
+            #getForecastButton {
+                height: 40px;
+                width: 100px;
+                margin-left: 10px;
+                border-radius: 20px 20px 20px 20px;
+                border: none;
+                font-size: var(--fontSizeHeader);
+                color: var(--majorColor);
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+main {
+    height: var(--mainHeight);
+    width: 100%;
+    padding-top: var(--headerAndfooterHeight);
+    background-color: var(--majorColor);
+    z-index: 1;
+
+    .mainContent {
+        padding-left: var(--borderPaddings);
+        padding-right: var(--borderPaddings);
+
+        .forecastCard {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .universalCard {
+                padding-top: 50px;
+            }
+
+            .universalWeatherPic {
+                filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+            }
+
+            .universalDayBio {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+            }
+
+            .majorRowDayBio, .minorRowDayBio {
+                display: flex;
+                justify-content: space-around;
+            }
+
+            .minorRowDayBio {
+                padding-top: 5px;
+
+
+                .weatherPrecipitation, .weatherWind {
+                    display: flex;
+                    align-items: center;
+
+                    .minorPic {
+                        width: 50px;
+                        height: 50px;
+                    }
+                }
+            }
+
+
+            .chosenDayWeather {
+                /*padding-top: 50px;*/
+                display: flex;
+                justify-items: center;
+
+                .dayVisualDescribe {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    .weatherPic {
+                        height: 150px;
+                        width: 150px;
+                        /*filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);*/
+                    }
+
+                    .cityName {
+                        text-align: center;
+                        font-size: var(--fontSizeChosenCity);
+                        position: relative;
+                        bottom: 10px;
+                    }
+                }
+
+                .dayBio {
+                    /*display: flex;
+                    justify-content: space-around;*/
+                    font-size: var(--fontSizeChosenBio)
+                }
+
+                .weatherDay {
+                    display: none;
+                }
+            }
+
+            .previewDaysWeather {
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                column-gap: var(--defaultItemsPadding);
+               /*padding-top: 50px*/
+
+                .cardDaysWeatherWrapper {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+
+                    .cardDaysWeather {
+                        border: 3px solid white;
+                        border-radius: 20px 20px 20px 20px;
+
+
+                        .dayVisualDescribe {
+                            font-size: var(--fontSizePreviewCity);
+
+                            .weatherPic {
+                                width: 100px;
+                                height: 100px;
+                                /*filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);*/
+                            }
+
+                            .cityName {
+                                display: none;
+                            }
+                        }
+
+                        .dayBio {
+                            /*display: flex;
+                            justify-content: space-around;*/
+                            position: relative;
+                            bottom: 10px;
+                            font-size: var(--fontSizePreviewBio)
+
+
+                        }
+
+                        .minorRowDayBio {
+                                display: none;
+                           }
+
+                    &:hover {
+                        scale: 1.1;
+                    }
+                    }
+
+
+
+                    .weatherDay {
+                        font-size: var(--fontSizePreviewBio);
+                        padding-top: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+footer {
+    height: var(--headerAndfooterHeight);
+    width: 100%;
+    background-color: var(--minorColor);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--fontSizeFooter);
+
+    span {
+        padding-left: var(--borderPaddings);
+    }
+
+    a {
+        padding-right: var(--borderPaddings);
+        color: var(--textColor);
+        text-decoration: none;
+
+        :visited {
+            text-decoration: none;
+        }
+    }
+}
+
+
+@media screen and (max-width: 900px) {
+    :root {
+        --borderPaddings: 10px;
+        --defaultItemsPadding: 5px;
+
+        --fontSizeHeader: 13px;
+        --fontSizeChosenCity: 28px;
+        --fontSizeChosenBio: 13px;
+        --fontSizePreviewBio: calc(var(--fontSizeChosenBio) - 5px);
+        --fontSizeFooter: 13px;
+    }
+
+    header {
+
+        .headerContent {
+            grid-template-columns: 10% 40% 55%;
+
+
+            .homeLogo {
+                height: 60px;
+                width: 60px;
+
+            }
+
+            .websiteTitle {
+                font-size: 20px;
+                word-break: break-word;
+                width: 80px;
+
+            }
+
+            form {
+
+                #cityNameInput {
+                    height: 30px;
+                    width: 130px;
+                    border-radius: 20px 20px 20px 20px;
+                    padding-left: 20px;
+                }
+
+                #getForecastButton {
+                    height: 20px;
+                    width: 50px;
+                    margin-left: 5px;
+                    font-size: var(--fontSizeHeader);
+                }
+            }
+        }
+    }
+
+    main {
+        .mainContent {
+            .forecastCard {
+                .previewDaysWeather {
+                    .cardDaysWeatherWrapper {
+                        .cardDaysWeather {
+                            .dayVisualDescribe {
+                                .weatherPic {
+                                    width: 40px;
+                                    height: 40px;
+                                }
+                            }
+
+                            .dayBio {
+                                display: flex;
+                                flex-direction: column;
+                                text-align: center;
+                                bottom: 5px;
+                                font-size: var(--fontSizePreviewBio)
+                            }
+
+                            .majorRowDayBio {
+                                display: flex;
+                                flex-direction: column;
+                                text-align: center;
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
