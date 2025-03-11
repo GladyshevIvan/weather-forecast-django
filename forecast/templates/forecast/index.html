@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forecast</title>
+    <link rel="icon" href="{% static 'forecast/img/ico.ico' %}">
+    <link rel="stylesheet" href="{% static 'forecast/css/styles_index.css' %}">
+</head>
+<body>
+    <header>
+        <div class="headerContent">
+            <a href="{% url 'index' %}"><img class="homeLogo" src="{% static 'forecast/img/ico.ico' %}" alt="Home Logo"></a>
+            <span class="websiteTitle">Weather Forecast</span>
+            <form>
+                <input id="cityNameInput" type="text" placeholder="Enter city name">
+                <button id="getForecastButton" type="submit">Get</button>
+            </form>
+        </div>
+    </header>
+    <main>
+        <div class="mainContent">
+            <div class="forecastCard">
+                <div class="chosenDayWeather universalCard">
+                    <!--Chosen card should be-->
+                </div>
+                <div class="previewDaysWeather universalCard">
+                    <!--Preview cards should be here-->
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <span>© 2025 Weather</span>
+        <a href="https://github.com/GladyshevIvan">Created by Gladyshev Ivan</a>
+    </footer>
+{% csrf_token %}
+</body>
+<script type="module" src="{% static 'forecast/js/getGeolocationForecast.js' %}"></script>
+<script type="module" src="{% static 'forecast/js/getFormForecast.js' %}"></script>
+<script type="module" src="{% static 'forecast/js/chooseDay.js' %}"></script>
+</html>
